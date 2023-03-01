@@ -1,0 +1,26 @@
+:root {
+  /* Primary */
+  --primary-darker: #b59e9f;
+  --primary-dark: #cbb1b3;
+  --primary: #e2c5c7;
+  --primary-light: #e5cbcd;
+  --primary-lighter: #e8d1d2;
+  /* Accent */
+  --accent-darker: #ca8c26;
+  --accent-dark: #e49e2b;
+  --accent: #fdaf30;
+  --accent-light: #fdb745;
+  --acent-lighter: #fdbf59;
+  /* Dark */
+  --gray-darker: #16161e;
+  --gray-dark: #181821;
+  --gray: #1b1b25;
+  --gray-light: #32323b;
+  --gray-lighter: #494951;
+  /* Light */
+  --linen-darker: #c6bfb7;
+  --linen-dark: #dfd7ce;
+  --linen: #f8efe5;
+  --linen-light: #f9f1e8;
+  --linen-lighter: #f9f2ea;
+}

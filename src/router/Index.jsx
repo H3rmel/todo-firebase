@@ -6,6 +6,8 @@ import Home from "@/pages/Home/Index";
 import NotFound from "@/pages/NotFound/Index";
 import Register from "@/pages/Register/Index";
 
+import Protected from "./Protected";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -19,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <Admin />,
+    element: <Protected> <Admin/> </Protected>,
     errorElement: <Error />,
   },
   {
