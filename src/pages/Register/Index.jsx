@@ -9,6 +9,9 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 
 import { toast } from "react-toastify";
 
+import * as formCss from "@modules/form.module.css";
+import * as layoutCss from "@modules/layout.module.css";
+
 const Register = () => {
   const [user, setUser] = useState({
     email: "",
@@ -34,11 +37,14 @@ const Register = () => {
 
   return (
     <Layout pageTitle="Registrar-se">
-      <h1 className="text-center heading">Registre-se</h1>
-      <h4 className="text-center">Vamos criar sua conta!</h4>
-      <form onSubmit={handleSignUp}>
+      <hgroup className={layoutCss.headings}>
+        <h1>Registre-se</h1>
+        <h3>Vamos criar sua conta!</h3>
+      </hgroup>
+      <form className={formCss.form} onSubmit={handleSignUp}>
         <input
           type="text"
+          className={formCss.input}
           placeholder="Digite seu e-mail..."
           value={user.email}
           onChange={(e) =>
@@ -48,15 +54,22 @@ const Register = () => {
         <input
           autoComplete="false"
           type="password"
+          className={formCss.input}
           placeholder="Digite sua senha..."
           value={user.password}
           onChange={(e) =>
             setUser({ email: user.email, password: e.target.value })
           }
         />
-        <button type="submit">Criar conta</button>
+        <div className={layoutCss.btns}>
+          <button className={formCss.btn} type="submit">
+            Criar conta
+          </button>
+          <Link to="/" className={layoutCss.link}>
+            Já possui conta? É só logar
+          </Link>
+        </div>
       </form>
-      <Link to="/">Já possui conta? É só logar</Link>
     </Layout>
   );
 };

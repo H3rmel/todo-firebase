@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Layout from "@/components/Layout/Index";
+import Tasks from "@/components/Tasks/Index";
 
 import { auth, database } from "@/services/firebase";
 import { signOut } from "firebase/auth";
@@ -14,6 +15,10 @@ import {
   query,
   where
 } from "firebase/firestore";
+
+import * as adminCss from "@modules/admin.module.css";
+import * as formCss from "@modules/form.module.css";
+import * as layoutCss from "@modules/layout.module.css";
 
 const Admin = () => {
   const [newTask, setNewTask] = useState("");
@@ -92,38 +97,23 @@ const Admin = () => {
 
   return (
     <Layout pageTitle="Admin">
-      <hgroup>
+      <hgroup className={layoutCss.headings}>
         <h1 className="text-center heading">Meu TODO</h1>
         <h4 className="text-center">
           Aqui estão todas as suas tarefas, organize-as como achar melhor! 😉
         </h4>
       </hgroup>
-      <article>
-        <form onSubmit={handleCreateTask}>
-          <textarea
-            placeholder="Adicione uma tarefa..."
-            value={newTask}
-            onChange={(e) => setNewTask(e.target.value)}
-          />
-          <button type="submit">Adicionar tarefa</button>
-        </form>
-      </article>
-      <article>
-        <ul>
-          {tasks.map((task) => (
-            <li key={task.id}>
-              <p>{task.task}</p>
-              <div>
-                <button>Editar</button>
-                <button onClick={() => handleDeleteTask(task.id)}>
-                  Excluir
-                </button>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </article>
-      <button className="logout" onClick={handleLogOut}>
+      <form className={formCss.form} onSubmit={handleCreateTask}>
+        <textarea
+          className={formCss.input}
+          placeholder="Adicione uma tarefa..."
+          value={newTask}
+          onChange={(e) => setNewTask(e.target.value)}
+        />
+        <button className={formCss.btn} type="submit">Adicionar tarefa</button>
+      </form>
+      <Tasks tasks={tasks} />
+      <button className={adminCss.logout} onClick={handleLogOut}>
         Sair
       </button>
     </Layout>

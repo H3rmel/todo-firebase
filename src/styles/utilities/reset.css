@@ -24,6 +24,17 @@ h5,
 h6 {
   font-family: "Space Grotesk", sans-serif;
   margin-top: 0;
+}
+
+h1,
+h2 {
+  margin-bottom: 0.25rem;
+}
+
+h3,
+h4,
+h5,
+h6 {
   margin-bottom: 0.5rem;
 }
 
@@ -79,8 +90,8 @@ textarea {
 
 [type="checkbox"],
 [type="radio"] {
-  box-sizing: border-box; /* 1 */
-  padding: 0; /* 2 */
+  box-sizing: border-box;
+  padding: 0;
 }
 
 [type="number"]::-webkit-inner-spin-button,
