@@ -21,6 +21,7 @@ O projeto se encontra hospedado na [Vercel](https://vercel.com), no seguinte lin
 
 - React
 - React Router
+- React Toastify
 - CSS Modules
 - Firebase
 - LocalStorage
