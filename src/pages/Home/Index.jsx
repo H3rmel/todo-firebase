@@ -52,7 +52,7 @@ const Home = () => {
           className={formCss.input}
           placeholder="Digite sua senha..."
           value={user.password}
-          onChange={(e) => setUser({ ...Home, password: e.target.value })}
+          onChange={(e) => setUser({ ...user, password: e.target.value })}
         />
         <div className={layoutCss.btns}>
           <button className={formCss.btn} type="submit">

@@ -16,7 +16,7 @@
   width: 50%;
   background: var(--cod-gray-light);
   padding: 1rem;
-  border-left: 0.25rem solid var(--celurean);
+  border-left: 0.25rem solid var(--cod-gray-lighter);
   border-radius: 0.75rem;
 }
 
@@ -71,17 +71,24 @@
 }
 
 .completed {
-  border-color: var(--begonia);
+  border-color: var(--celurean);
+}
+
+@media (max-width: 1200px) {
+  .taskCard {
+    width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
-  .taskCard {
-    width: 100%;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
   .taskForm {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .taskCard {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 }

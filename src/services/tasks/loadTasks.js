@@ -23,6 +23,7 @@ const loadTasks = (user, setTasks) => {
       completed: doc.data().completed,
       userId: doc.data().userId,
     }));
+    list.sort((a, b) => a.completed - b.completed);
     setTasks(list);
   });
 };
