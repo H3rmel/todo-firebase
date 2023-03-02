@@ -1,8 +1,11 @@
-export const saveUserData = (user) => {
+const saveUserData = (user) => {
   const userData = {
-    uId: user.uid,
+    id: user.uid,
     email: user.email,
   };
 
   localStorage.setItem("@detailUser", JSON.stringify(userData));
 };
+
+export { saveUserData };
+

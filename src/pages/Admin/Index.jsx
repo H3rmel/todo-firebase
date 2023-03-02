@@ -1,97 +1,63 @@
 import { useEffect, useState } from "react";
 
 import Layout from "@/components/Layout/Index";
-import Tasks from "@/components/Tasks/Index";
+import TaskList from "@/components/TaskList/Index";
 
-import { auth, database } from "@/services/firebase";
+import { createNewTask } from "@/services/tasks/createTask";
+import { loadTasks } from "@/services/tasks/loadTasks";
+
 import { signOut } from "firebase/auth";
-import {
-  addDoc,
-  collection,
-  deleteDoc,
-  doc,
-  onSnapshot,
-  orderBy,
-  query,
-  where
-} from "firebase/firestore";
+
+import { auth } from "@/services/firebase";
+
+import { toast } from "react-toastify";
 
 import * as adminCss from "@modules/admin.module.css";
 import * as formCss from "@modules/form.module.css";
 import * as layoutCss from "@modules/layout.module.css";
 
 const Admin = () => {
+  const [user, setUser] = useState({});
   const [newTask, setNewTask] = useState("");
   const [tasks, setTasks] = useState([]);
-  const [user, setUser] = useState("");
 
   useEffect(() => {
-    loadTasks();
+    loadUserData();
   }, []);
 
-  const loadTasks = () => {
+  const loadUserData = async () => {
     const userDetail = localStorage.getItem("@detailUser");
     setUser(JSON.parse(userDetail));
 
-    if (!userDetail) return;
+    if (!user) toast.error("Ocorreu um ero ao resgatar os dados do usuário!");
 
-    const data = JSON.parse(userDetail);
-
-    const taskRef = collection(database, "tasks");
-    const taskQuery = query(
-      taskRef,
-      orderBy("created", "desc"),
-      where("userUid", "==", data?.uId)
-    );
-
-    const unsub = onSnapshot(taskQuery, (snapshot) => {
-      const list = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        task: doc.data().task,
-        userUid: doc.data().userUid,
-      }));
-      console.log(list);
-      setTasks(list);
-    });
-  };
-
-  const handleCreateTask = async (e) => {
-    e.preventDefault();
-
-    if (newTask === "") {
-      alert("Digite sua tarefa!");
-      return;
-    }
+    const userData = JSON.parse(userDetail);
 
     try {
-      await addDoc(collection(database, "tasks"), {
-        task: newTask,
-        created: new Date(),
-        userUid: user?.uId,
-      });
-      setNewTask("");
-      console.log("Tarefa registrada!");
+      await loadTasks(userData, setTasks);
     } catch (error) {
-      console.log(`Erro: ${error}`);
-    }
-  };
-
-  const handleDeleteTask = async (id) => {
-    const docRef = doc(database, "tasks", id);
-
-    try {
-      await deleteDoc(docRef);
-      console.log("Deletado com sucesso!");
-    } catch (error) {
-      console.log(`Erro: ${error}`);
+      toast.error(`Erro ao carregar as tarefas! ${error}`);
     }
   };
 
   const handleLogOut = async () => {
     try {
       await signOut(auth);
+      toast.success("Desconectado com sucesso!");
     } catch (error) {
-      console.log(error);
+      toast.error(error);
+    }
+  };
+
+  const handleCreateNewTask = async (e) => {
+    e.preventDefault();
+
+    try {
+      await createNewTask(newTask, user.id);
+      setNewTask("");
+      toast.success("Tarefa criada com sucesso!");
+    } catch (error) {
+      toast.error(error);
     }
   };
 
@@ -103,16 +69,19 @@ const Admin = () => {
           Aqui estão todas as suas tarefas, organize-as como achar melhor! 😉
         </h4>
       </hgroup>
-      <form className={formCss.form} onSubmit={handleCreateTask}>
+      <form className={formCss.form} onSubmit={handleCreateNewTask}>
         <textarea
           className={formCss.input}
           placeholder="Adicione uma tarefa..."
           value={newTask}
           onChange={(e) => setNewTask(e.target.value)}
         />
-        <button className={formCss.btn} type="submit">Adicionar tarefa</button>
+        <button className={formCss.btn} type="submit">
+          Adicionar tarefa
+        </button>
       </form>
-      <Tasks tasks={tasks} />
+      <hr className={layoutCss.divider} />
+      <TaskList tasks={tasks} callback={loadUserData} />
       <button className={adminCss.logout} onClick={handleLogOut}>
         Sair
       </button>

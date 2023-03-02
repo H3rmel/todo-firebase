@@ -4,8 +4,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Layout from "@/components/Layout/Index";
 
+import { signUpUser } from "@/services/auth/register";
+
 import { auth } from "@/services/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
 
 import { toast } from "react-toastify";
 
@@ -23,16 +24,12 @@ const Register = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
 
-    if (user.email === "" && user.password === "")
-      toast.error("Preencha os campos!");
-    else
-      try {
-        await createUserWithEmailAndPassword(auth, user.email, user.password);
-        toast.success("Registrado com sucesso!");
-        navigate("/admin", { replace: true });
-      } catch (error) {
-        toast.error(error);
-      }
+    try {
+      signUpUser(auth, user);
+      navigate("/admin", { replace: true });
+    } catch (error) {
+      toast.error(error);
+    }
   };
 
   return (
@@ -43,7 +40,7 @@ const Register = () => {
       </hgroup>
       <form className={formCss.form} onSubmit={handleSignUp}>
         <input
-          type="text"
+          type="email"
           className={formCss.input}
           placeholder="Digite seu e-mail..."
           value={user.email}

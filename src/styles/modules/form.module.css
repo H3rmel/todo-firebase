@@ -16,6 +16,7 @@
   border: 0;
   border-radius: 0.75rem;
   transition: 300ms;
+  resize: none;
 }
 
 .input:focus, input:focus-visible {

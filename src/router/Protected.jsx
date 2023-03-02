@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 
 import { Navigate } from "react-router-dom";
 
+import { saveUserData } from "@/services/auth/user";
+
 import { auth } from "@/services/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
-import { saveUserData } from "@/services/storage/user";
+import { toast } from "react-toastify";
 
 const Protected = ({ children }) => {
   const [loading, setLoading] = useState(true);
@@ -22,7 +24,7 @@ const Protected = ({ children }) => {
         else userAuthIsFalse();
       });
     } catch (error) {
-      console.log(`Erro: ${error}`);
+      toast.error(error);
     }
   };
 
