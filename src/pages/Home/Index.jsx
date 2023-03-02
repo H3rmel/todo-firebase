@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Layout from "@/components/Layout/Index";
 
-import { signInUser } from "@/services/auth/login";
+import { signInUser } from "@/services/auth/sign";
 
 import { auth } from "@/services/firebase";
 
