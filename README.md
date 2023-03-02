@@ -9,6 +9,7 @@ O Todo Firebase é um projeto realizado por meio de um curso de ReactJS da Udemy
 - [x] Registrar usuário;
 - [x] Logar usuários;
 - [x] Persistência de login e rota protegida;
+- [ ] Tratar erros retornados na parte de autenticação do usuário;
 - [x] CRUD de tarefas básico.
 
 ## Hospedagem 🏨
