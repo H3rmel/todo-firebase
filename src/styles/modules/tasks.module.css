@@ -16,10 +16,17 @@
   width: 50%;
   background: var(--cod-gray-light);
   padding: 1rem;
+  border-left: 0.25rem solid var(--celurean);
   border-radius: 0.75rem;
 }
 
-.taskCard > input {
+.taskForm {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.taskForm > input {
   background: var(--cod-gray);
 }
 
@@ -63,10 +70,8 @@
   background: var(--begonia-dark);
 }
 
-.save {
-  position: absolute;
-  top: 57.5%;
-  left: 45%;
+.completed {
+  border-color: var(--begonia);
 }
 
 @media (max-width: 768px) {
@@ -76,9 +81,7 @@
     gap: 0.5rem;
   }
 
-  .save {
-    top: 21%;
-    left: initial;
-    right: 7.5%;
+  .taskForm {
+    width: 100%;
   }
 }

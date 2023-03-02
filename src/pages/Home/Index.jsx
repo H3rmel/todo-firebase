@@ -44,9 +44,7 @@ const Home = () => {
           className={formCss.input}
           placeholder="Digite seu e-mail..."
           value={user.email}
-          onChange={(e) =>
-            setUser({ email: e.target.value, password: user.password })
-          }
+          onChange={(e) => setUser({ ...user, email: e.target.value })}
         />
         <input
           autoComplete="false"
@@ -54,9 +52,7 @@ const Home = () => {
           className={formCss.input}
           placeholder="Digite sua senha..."
           value={user.password}
-          onChange={(e) =>
-            setUser({ email: user.email, password: e.target.value })
-          }
+          onChange={(e) => setUser({ ...Home, password: e.target.value })}
         />
         <div className={layoutCss.btns}>
           <button className={formCss.btn} type="submit">
