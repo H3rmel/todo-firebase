@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { Navigate } from "react-router-dom";
 
-import { saveUserData } from "@/services/auth/user";
+import { saveUserData } from "@/services/auth/userData";
 
 import { auth } from "@/services/firebase";
 import { onAuthStateChanged } from "firebase/auth";

@@ -1,8 +1,9 @@
 import Task from "@/components/Task/Index";
 
-import { deleteDoc, doc, updateDoc } from "firebase/firestore";
+import { deleteDoc, doc } from "firebase/firestore";
 
 import { database } from "@/services/firebase";
+import { editTask } from "@/services/tasks/editTask";
 
 import { toast } from "react-toastify";
 
@@ -10,13 +11,8 @@ import * as tasksCss from "@modules/tasks.module.css";
 
 const TaskList = ({ tasks, callback }) => {
   const handleEditTaskCallback = async (task) => {
-    const docRef = doc(database, "tasks", task.id);
-
     try {
-      await updateDoc(docRef, {
-        completed: task.completed,
-        name: task.name,
-      });
+      await editTask(task);
       toast.success("Tarefa editada com sucesso!");
       callback();
     } catch (error) {
