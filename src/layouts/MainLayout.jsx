@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 
 import * as layoutCss from "@modules/layout.module.css";
 
-const Layout = ({ children, pageTitle }) => {
+const MainLayout = ({ children, pageTitle }) => {
   useEffect(() => {
     document.title = `${pageTitle} | Todo Firebase`;
   });
@@ -17,4 +17,4 @@ const Layout = ({ children, pageTitle }) => {
   );
 };
 
-export default Layout;
+export default MainLayout;

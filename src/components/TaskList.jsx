@@ -1,4 +1,4 @@
-import Task from "@/components/Task/Index";
+import Task from "./Task";
 
 import { deleteDoc, doc } from "firebase/firestore";
 

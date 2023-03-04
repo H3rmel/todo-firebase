@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import Layout from "@/components/Layout/Index";
+import MainLayout from "@/layouts/MainLayout";
 
 import { signUpUser } from "@/services/auth/sign";
 
@@ -33,7 +33,7 @@ const Register = () => {
   };
 
   return (
-    <Layout pageTitle="Registrar-se">
+    <MainLayout pageTitle="Registrar-se">
       <hgroup className={layoutCss.headings}>
         <h1>Registre-se</h1>
         <h3>Vamos criar sua conta!</h3>
@@ -63,7 +63,7 @@ const Register = () => {
           </Link>
         </div>
       </form>
-    </Layout>
+    </MainLayout>
   );
 };
 

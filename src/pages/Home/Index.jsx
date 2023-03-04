@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import Layout from "@/components/Layout/Index";
+import MainLayout from "@/layouts/MainLayout";
 
 import { signInUser } from "@/services/auth/sign";
 
@@ -33,7 +33,7 @@ const Home = () => {
   };
 
   return (
-    <Layout pageTitle="Login">
+    <MainLayout pageTitle="Login">
       <hgroup className={layoutCss.headings}>
         <h1>Todo Firebase</h1>
         <h3>Gerencia suas tarefas de forma fácil!</h3>
@@ -63,7 +63,7 @@ const Home = () => {
           </Link>
         </div>
       </form>
-    </Layout>
+    </MainLayout>
   );
 };
 

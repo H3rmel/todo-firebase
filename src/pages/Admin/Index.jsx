@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import Layout from "@/components/Layout/Index";
-import TaskList from "@/components/TaskList/Index";
+import TaskList from "@/components/TaskList";
+import MainLayout from "@/layouts/MainLayout";
 
 import { createNewTask } from "@/services/tasks/createTask";
 import { loadTasks } from "@/services/tasks/loadTasks";
@@ -29,7 +29,7 @@ const Admin = () => {
     const userDetail = localStorage.getItem("@detailUser");
     setUser(JSON.parse(userDetail));
 
-    if (!user) toast.error("Ocorreu um ero ao resgatar os dados do usuário!");
+    if (!user) toast.error("Ocorreu um erro ao resgatar os dados do usuário!");
 
     const userData = JSON.parse(userDetail);
 
@@ -62,7 +62,7 @@ const Admin = () => {
   };
 
   return (
-    <Layout pageTitle="Admin">
+    <MainLayout pageTitle="Admin">
       <hgroup className={layoutCss.headings}>
         <h1 className="text-center heading">Meu TODO</h1>
         <h4 className="text-center">
@@ -85,7 +85,7 @@ const Admin = () => {
       <button className={adminCss.logout} onClick={handleLogOut}>
         Sair
       </button>
-    </Layout>
+    </MainLayout>
   );
 };
 
