@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import { Admin, Error, Home, NotFound, Register } from "/src/pages";
+import { Admin, Error, Home, NotFound, Register } from "@/pages/Index";
 
 import Protected from "./Protected";
 

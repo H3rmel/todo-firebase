@@ -1,6 +1,6 @@
-export { Admin } from "./Admin";
-export { Error } from "./Error";
-export { Home } from "./Home";
-export { NotFound } from "./NotFound";
-export { Register } from "./Register";
+export { Admin } from "./Admin/Index";
+export { Error } from "./Error/Index";
+export { Home } from "./Home/Index";
+export { NotFound } from "./NotFound/Index";
+export { Register } from "./Register/Index";
 
