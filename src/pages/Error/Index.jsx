@@ -2,7 +2,7 @@ import { Link, useRouteError } from "react-router-dom";
 
 import * as notFoundCss from "@modules/notFound.module.css";
 
-const Error = () => {
+export const Error = () => {
   const error = useRouteError();
   return (
     <div className={notFoundCss.container}>
@@ -15,5 +15,3 @@ const Error = () => {
     </div>
   );
 };
-
-export default Error;

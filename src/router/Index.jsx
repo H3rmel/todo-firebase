@@ -1,10 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 
-import Admin from "@/pages/Admin/Index";
-import Error from "@/pages/Error/Index";
-import Home from "@/pages/Home/Index";
-import NotFound from "@/pages/NotFound/Index";
-import Register from "@/pages/Register/Index";
+import { Admin, Error, Home, NotFound, Register } from "/src/pages";
 
 import Protected from "./Protected";
 
@@ -21,7 +17,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <Protected> <Admin/> </Protected>,
+    element: <Protected children={<Admin />} />,
     errorElement: <Error />,
   },
   {

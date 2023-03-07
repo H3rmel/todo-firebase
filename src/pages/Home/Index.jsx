@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 import * as formCss from "@modules/form.module.css";
 import * as layoutCss from "@modules/layout.module.css";
 
-const Home = () => {
+export const Home = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -36,7 +36,7 @@ const Home = () => {
     <MainLayout pageTitle="Login">
       <hgroup className={layoutCss.headings}>
         <h1>Todo Firebase</h1>
-        <h3>Gerencia suas tarefas de forma fácil!</h3>
+        <h3>Gerencie suas tarefas de forma fácil!</h3>
       </hgroup>
       <form className={formCss.form} onSubmit={handleSignIn}>
         <input
@@ -66,5 +66,3 @@ const Home = () => {
     </MainLayout>
   );
 };
-
-export default Home;

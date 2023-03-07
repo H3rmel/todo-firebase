@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 import * as formCss from "@modules/form.module.css";
 import * as layoutCss from "@modules/layout.module.css";
 
-const Register = () => {
+export const Register = () => {
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -66,5 +66,3 @@ const Register = () => {
     </MainLayout>
   );
 };
-
-export default Register;

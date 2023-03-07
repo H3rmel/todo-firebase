@@ -16,7 +16,7 @@ import * as adminCss from "@modules/admin.module.css";
 import * as formCss from "@modules/form.module.css";
 import * as layoutCss from "@modules/layout.module.css";
 
-const Admin = () => {
+export const Admin = () => {
   const [user, setUser] = useState({});
   const [newTask, setNewTask] = useState("");
   const [tasks, setTasks] = useState([]);
@@ -88,5 +88,3 @@ const Admin = () => {
     </MainLayout>
   );
 };
-
-export default Admin;
