@@ -19,7 +19,7 @@ O Todo Firebase é um projeto realizado por meio de um curso de ReactJS da Udemy
 
 O projeto se encontra hospedado na [Vercel](https://vercel.com), no seguinte link:
 
-[Login - Todo Firebase](https://todo-firebase-h3rmel.vercel.app/)
+[Login | Todo Firebase](https://todo-firebase-h3rmel.vercel.app/)
 
 ## Tecnologias 🛠️
 
